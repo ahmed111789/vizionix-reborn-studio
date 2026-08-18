@@ -20,8 +20,8 @@ function NavLink({
 }: {
   to: string;
   children: React.ReactNode;
-  onNavigate?: () => void;
-  className?: string;
+  onNavigate?: (() => void) | undefined;
+  className?: string | undefined;
 }) {
   return (
     <Link
@@ -42,7 +42,7 @@ function NavLink({
   );
 }
 
-function NavList({ onNavigate }: { onNavigate?: () => void }) {
+function NavList({ onNavigate }: { onNavigate?: (() => void) | undefined }) {
   return (
     <nav aria-label="Navigation principale" className="flex flex-col gap-[0.9rem] text-[0.92rem]">
       <NavLink to="/" onNavigate={onNavigate}>
