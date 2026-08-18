@@ -10,33 +10,92 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuditRouteImport } from './routes/audit'
+import { Route as ComptabiliteRouteImport } from './routes/comptabilite'
+import { Route as DroitRouteImport } from './routes/droit'
+import { Route as FiscaliteRouteImport } from './routes/fiscalite'
+import { Route as OrganisationRouteImport } from './routes/organisation'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ComptabiliteRoute = ComptabiliteRouteImport.update({
+  id: '/comptabilite',
+  path: '/comptabilite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DroitRoute = DroitRouteImport.update({
+  id: '/droit',
+  path: '/droit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FiscaliteRoute = FiscaliteRouteImport.update({
+  id: '/fiscalite',
+  path: '/fiscalite',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrganisationRoute = OrganisationRouteImport.update({
+  id: '/organisation',
+  path: '/organisation',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/comptabilite': typeof ComptabiliteRoute
+  '/droit': typeof DroitRoute
+  '/fiscalite': typeof FiscaliteRoute
+  '/organisation': typeof OrganisationRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/comptabilite': typeof ComptabiliteRoute
+  '/droit': typeof DroitRoute
+  '/fiscalite': typeof FiscaliteRoute
+  '/organisation': typeof OrganisationRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/audit': typeof AuditRoute
+  '/comptabilite': typeof ComptabiliteRoute
+  '/droit': typeof DroitRoute
+  '/fiscalite': typeof FiscaliteRoute
+  '/organisation': typeof OrganisationRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/audit' | '/comptabilite' | '/droit' | '/fiscalite' | '/organisation'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    '/' | '/audit' | '/comptabilite' | '/droit' | '/fiscalite' | '/organisation'
+  id:
+    | '__root__'
+    | '/'
+    | '/audit'
+    | '/comptabilite'
+    | '/droit'
+    | '/fiscalite'
+    | '/organisation'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuditRoute: typeof AuditRoute
+  ComptabiliteRoute: typeof ComptabiliteRoute
+  DroitRoute: typeof DroitRoute
+  FiscaliteRoute: typeof FiscaliteRoute
+  OrganisationRoute: typeof OrganisationRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +107,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comptabilite': {
+      id: '/comptabilite'
+      path: '/comptabilite'
+      fullPath: '/comptabilite'
+      preLoaderRoute: typeof ComptabiliteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/droit': {
+      id: '/droit'
+      path: '/droit'
+      fullPath: '/droit'
+      preLoaderRoute: typeof DroitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fiscalite': {
+      id: '/fiscalite'
+      path: '/fiscalite'
+      fullPath: '/fiscalite'
+      preLoaderRoute: typeof FiscaliteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/organisation': {
+      id: '/organisation'
+      path: '/organisation'
+      fullPath: '/organisation'
+      preLoaderRoute: typeof OrganisationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuditRoute: AuditRoute,
+  ComptabiliteRoute: ComptabiliteRoute,
+  DroitRoute: DroitRoute,
+  FiscaliteRoute: FiscaliteRoute,
+  OrganisationRoute: OrganisationRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
