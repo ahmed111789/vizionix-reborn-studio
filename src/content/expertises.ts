@@ -113,3 +113,10 @@ export const EXPERTISES: Expertise[] = [
       "Un premier échange permet d'identifier les régimes et avantages auxquels votre activité peut prétendre.",
   },
 ];
+
+/** Lookup by route slug. Throws at module load if a slug is mistyped. */
+export function getExpertise(slug: string): Expertise {
+  const found = EXPERTISES.find((e) => e.slug === slug);
+  if (!found) throw new Error(`Unknown expertise slug: ${slug}`);
+  return found;
+}
