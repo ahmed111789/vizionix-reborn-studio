@@ -38,7 +38,15 @@ Both reuse the existing Section / Hero / Reveal / TeamCard / Letterhead componen
 - One `<main>` per page, working skip link, ordered headings, `lang="fr"` on the document.
 - Per-route `head()` with distinct French title, description and og tags.
 
-## 5. Verification
+## 5. Fix outstanding type errors
+
+Strict `exactOptionalPropertyTypes` is on, so a few components fail typecheck:
+optional props passed as `undefined` in `ContactForm.tsx` and `Rail.tsx`, and the
+expertise lookup in the five expertise routes returning a possibly-undefined value.
+Fix by widening those prop types to accept `undefined` and by narrowing the lookup
+(throw `notFound()` when the slug is unknown).
+
+## 6. Verification
 
 Screenshot every route at desktop and mobile widths, confirm no console errors or 404 assets,
 and run a typecheck.
