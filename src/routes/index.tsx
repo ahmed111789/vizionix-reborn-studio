@@ -112,12 +112,14 @@ function Index() {
         lede="VIZIONIX accompagne les entreprises tunisiennes sur l'ensemble de leur cycle administratif, financier et juridique : des comptes tenus au jour le jour jusqu'à la représentation devant l'administration fiscale."
       />
 
-      <Section label="Expertises">
+      <HomeNav />
+
+      <Section label="Expertises" id="expertises">
         <SectionLabel>Nos expertises</SectionLabel>
         <Ledger />
       </Section>
 
-      <Section label="Chiffres">
+      <Section label="Chiffres" id="chiffres">
         <SectionLabel>Le cabinet en chiffres</SectionLabel>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
@@ -134,7 +136,7 @@ function Index() {
         </p>
       </Section>
 
-      <Section label="Approche">
+      <Section label="Approche" id="approche">
         <SectionLabel>Notre approche</SectionLabel>
         <div className="grid gap-10 md:grid-cols-3">
           {PRINCIPLES.map((p, i) => (
@@ -147,7 +149,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section label="Les associés">
+      <Section label="Les associés" id="associes">
         <SectionLabel>Les associés</SectionLabel>
         <div className="grid gap-12 md:grid-cols-2 md:gap-10">
           {PARTNERS.map((p, i) => (
