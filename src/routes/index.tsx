@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { CtaBand, Hero, Lede, Section, SectionLabel } from "@/components/vizionix/primitives";
+import { CtaBand, Eyebrow, Hero, Lede, Section, SectionLabel } from "@/components/vizionix/primitives";
 import { Reveal } from "@/components/vizionix/Reveal";
 import { TeamCard } from "@/components/vizionix/TeamCard";
 import { EXPERTISES } from "@/content/expertises";
