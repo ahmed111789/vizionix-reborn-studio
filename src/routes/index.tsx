@@ -42,6 +42,43 @@ const PRINCIPLES = [
   },
 ];
 
+function HomeNav() {
+  const internalLinks = [
+    { href: "#expertises", label: "Expertises" },
+    { href: "#chiffres", label: "Chiffres" },
+    { href: "#approche", label: "Approche" },
+    { href: "#associes", label: "Les associés" },
+  ];
+  const pageLinks = [
+    { to: "/apropos", label: "Le cabinet" },
+    { to: "/contact", label: "Contact" },
+  ];
+
+  const linkClasses =
+    "relative w-fit pb-[2px] text-muted-foreground no-underline transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-[width] after:duration-200 hover:text-foreground hover:after:w-full focus-visible:text-foreground focus-visible:after:w-full";
+
+  return (
+    <nav aria-label="Accès rapide" className="border-b border-line px-6 py-5 sm:px-10 lg:px-20">
+      <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.9rem]">
+        {internalLinks.map((l) => (
+          <li key={l.href}>
+            <a href={l.href} className={linkClasses}>
+              {l.label}
+            </a>
+          </li>
+        ))}
+        {pageLinks.map((l) => (
+          <li key={l.to}>
+            <Link to={l.to} className={linkClasses}>
+              {l.label}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 function Ledger() {
   return (
     <ul className="flex list-none flex-col p-0">
@@ -84,12 +121,14 @@ function Index() {
         lede="VIZIONIX accompagne les entreprises tunisiennes sur l'ensemble de leur cycle administratif, financier et juridique : des comptes tenus au jour le jour jusqu'à la représentation devant l'administration fiscale."
       />
 
-      <Section label="Expertises">
+      <HomeNav />
+
+      <Section label="Expertises" id="expertises">
         <SectionLabel>Nos expertises</SectionLabel>
         <Ledger />
       </Section>
 
-      <Section label="Chiffres">
+      <Section label="Chiffres" id="chiffres">
         <SectionLabel>Le cabinet en chiffres</SectionLabel>
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {STATS.map((s, i) => (
@@ -106,7 +145,7 @@ function Index() {
         </p>
       </Section>
 
-      <Section label="Approche">
+      <Section label="Approche" id="approche">
         <SectionLabel>Notre approche</SectionLabel>
         <div className="grid gap-10 md:grid-cols-3">
           {PRINCIPLES.map((p, i) => (
@@ -119,7 +158,7 @@ function Index() {
         </div>
       </Section>
 
-      <Section label="Les associés">
+      <Section label="Les associés" id="associes">
         <SectionLabel>Les associés</SectionLabel>
         <div className="grid gap-12 md:grid-cols-2 md:gap-10">
           {PARTNERS.map((p, i) => (
