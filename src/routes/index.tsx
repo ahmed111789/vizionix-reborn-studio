@@ -43,24 +43,33 @@ const PRINCIPLES = [
 ];
 
 function HomeNav() {
-  const links = [
-    { to: "#expertises", label: "Expertises" },
-    { to: "#chiffres", label: "Chiffres" },
-    { to: "#approche", label: "Approche" },
-    { to: "#associes", label: "Les associés" },
+  const internalLinks = [
+    { href: "#expertises", label: "Expertises" },
+    { href: "#chiffres", label: "Chiffres" },
+    { href: "#approche", label: "Approche" },
+    { href: "#associes", label: "Les associés" },
+  ];
+  const pageLinks = [
     { to: "/apropos", label: "Le cabinet" },
     { to: "/contact", label: "Contact" },
   ];
 
+  const linkClasses =
+    "relative w-fit pb-[2px] text-muted-foreground no-underline transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-[width] after:duration-200 hover:text-foreground hover:after:w-full focus-visible:text-foreground focus-visible:after:w-full";
+
   return (
     <nav aria-label="Accès rapide" className="border-b border-line px-6 py-5 sm:px-10 lg:px-20">
       <ul className="flex flex-wrap items-center gap-x-6 gap-y-2 text-[0.9rem]">
-        {links.map((l) => (
+        {internalLinks.map((l) => (
+          <li key={l.href}>
+            <a href={l.href} className={linkClasses}>
+              {l.label}
+            </a>
+          </li>
+        ))}
+        {pageLinks.map((l) => (
           <li key={l.to}>
-            <Link
-              to={l.to}
-              className="relative w-fit pb-[2px] text-muted-foreground no-underline transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-accent after:transition-[width] after:duration-200 hover:text-foreground hover:after:w-full focus-visible:text-foreground focus-visible:after:w-full"
-            >
+            <Link to={l.to} className={linkClasses}>
               {l.label}
             </Link>
           </li>
